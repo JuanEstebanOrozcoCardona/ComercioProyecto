@@ -1,0 +1,99 @@
+.main-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #282c34;
+  color: white;
+}
+
+.navbar-title {
+  color: #ffe066;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: 'Times New Roman', Times, serif;
+  text-shadow:
+    0 0 8px #fff8dc,
+    0 0 16px #ffe066,
+    0 0 24px #e49116,
+    0 0 32px #fff8dc;
+  background: linear-gradient(90deg, #fffbe6 20%, #ffe066 40%, #e49116 60%, #fffbe6 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: jewel-shine 2.5s linear infinite;
+}
+
+@keyframes jewel-shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  color: #e49116;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  background: linear-gradient(90deg, #fffbe6 20%, #ffe066 40%, #e49116 60%, #fffbe6 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 8px #fff8dc,
+    0 0 16px #ffe066,
+    0 0 24px #e49116,
+    0 0 32px #fff8dc;
+  animation: jewel-shine 2.5s linear infinite;
+}
+
+.navbar-link:last-child {
+  margin-right: 0;
+}
+
+.navbar-link:hover {
+  color: #fffbe6;
+  -webkit-text-fill-color: #fffbe6;
+  text-shadow:
+    0 0 12px #ffe066,
+    0 0 24px #e49116;
+}
+
+.navbar-title {
+  color: rgb(230, 175, 25);
+  text-decoration: antiquewhite;
+  font-family:'Times New Roman', Times, serif
+}
+
+.navbar-jewel {
+  font-size: 2rem;
+  margin-left: 2rem;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px #ffe066);
+  animation: jewel-float 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes jewel-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}

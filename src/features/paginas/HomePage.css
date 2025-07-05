@@ -1,0 +1,204 @@
+/* Fondo general */
+.homepage-bg {
+  background: #f8f9fa;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  width: 100vw;
+  min-width: 100vw;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image: linear-gradient(
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)
+  ), url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #e49116;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.hero-title span {
+  color: #e49116;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.hero-desc {
+  font-size: 1.3rem;
+  margin: 18px auto 28px auto;
+  color: #e49116;
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  background-color: #D4AF37;
+  color: #000;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.hero-btn:hover {
+  background-color: #bfa233;
+  color: #fff;
+}
+
+.categories-section {
+  width: 100vw;
+  max-width: 100vw;
+  padding: 3rem 0 2rem 0;
+  text-align: center;
+  background: #fff;
+}
+
+.categories-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  color: #e49116;
+  font-family:'Times New Roman', Times, serif
+}
+
+.categories-grid {
+  display: flex;
+  flex-wrap: nowrap;         /* <-- Importante: NO permitir salto de línea */
+  justify-content: center;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  overflow-x: auto;          /* Opcional: scroll horizontal si no cabe */
+}
+.category-card {
+  background: #f7f7f7;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.category-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-card-body {
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.category-card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #e49116;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.category-card-btn {
+  margin-top: 0.5rem;
+  background: none;
+  border: 2px solid #222;
+  color: #222;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+}
+
+.category-card-btn:hover {
+  background: #222;
+  color: #fff;
+}
+
+/* Oferta */
+.offer-section {
+  width: 100vw;
+  max-width: 100vw;
+  padding: 3rem 0;
+  background: #222;
+  color: #fff;
+  text-align: center;
+}
+
+.offer-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #e49116;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.offer-desc {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #e49116;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.offer-btn {
+  background: #ffc107;
+  color: #222;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+.offer-btn:hover {
+  background: #e0a800;
+  color: #fff;
+}

@@ -26,7 +26,6 @@ const ProductForm = ({ isOpen, onClose, onSave, product }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simple validation
     if (!formData.name || !formData.price || !formData.stock) {
         alert('Por favor, complete todos los campos requeridos.');
         return;

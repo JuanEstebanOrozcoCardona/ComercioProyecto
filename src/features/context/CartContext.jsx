@@ -11,7 +11,6 @@ function cartReducer(state, action) {
       const productInCartIndex = state.findIndex(item => item.id === product.id);
 
       if (productInCartIndex >= 0) {
-        // Si el producto ya está, incrementa la cantidad
         const newState = [...state];
         newState[productInCartIndex] = {
           ...newState[productInCartIndex],
@@ -20,7 +19,6 @@ function cartReducer(state, action) {
         return newState;
       }
       
-      // Si el producto no está, lo añade con cantidad 1
       return [...state, { ...product, quantity: 1 }];
     }
     case 'DECREASE_QUANTITY': {

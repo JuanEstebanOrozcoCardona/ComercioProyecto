@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProductCard = ({ product, onAddToCart }) => {
-  // Los datos del producto (name, imageUrl, etc.) vienen de nuestro `productService`
   return (
     <div className="product-card">
       <img src={product.imageUrl} alt={product.name} className="product-image" />

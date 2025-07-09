@@ -23,7 +23,6 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
-            {/* Ruta protegida para el Dashboard */}
             <Route element={<ProtectedRoute />}>
               <Route path="/dashboard" element={<DashboardPage />} />
             </Route>

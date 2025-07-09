@@ -59,7 +59,6 @@
     font-weight: bold;
 }
 
-/* Product Table Styles */
 .product-table {
     width: 100%;
     border-collapse: collapse;
@@ -101,7 +100,6 @@
     color: white;
 }
 
-/* Pagination Styles */
 .pagination {
     display: flex;
     justify-content: center;
@@ -125,7 +123,6 @@
     border-color: #007bff;
 }
 
-/* Modal Styles */
 .modal-overlay {
     position: fixed;
     top: 0;

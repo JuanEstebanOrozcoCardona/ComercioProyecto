@@ -8,7 +8,6 @@ export const useNavbarData = () => {
 
   const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
 
-  // Determina si el usuario es administrador
   const isAdmin = currentUser?.role === 'admin';
 
   return {

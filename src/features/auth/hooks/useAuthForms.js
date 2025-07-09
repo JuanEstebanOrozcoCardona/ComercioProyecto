@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 
-// --- Hook for Registration Form ---
 const registrationValidations = {
     cedula: value => {
         if (!value.trim()) return 'La cédula es obligatoria.';
@@ -39,7 +38,7 @@ export const useRegistrationForm = () => {
         apellido: '',
         correo: '',
         clave: '',
-        role: 'customer' // Valor por defecto
+        role: 'customer'
     });
     const [errors, setErrors] = useState({});
 
@@ -77,9 +76,8 @@ export const useRegistrationForm = () => {
                     text: 'La cédula o el correo electrónico ya están registrados.',
                 });
             } else {
-                const newUsers = [...existingUsers, formData]; // formData ya incluye el rol
+                const newUsers = [...existingUsers, formData];
                 localStorage.setItem('users', JSON.stringify(newUsers));
-                // Inicia sesión automáticamente después del registro
                 localStorage.setItem('currentUser', JSON.stringify(formData));
                 Swal.fire({
                     icon: 'success',
@@ -88,7 +86,7 @@ export const useRegistrationForm = () => {
                     timer: 2500,
                     showConfirmButton: false
                 }).then(() => {
-                    window.location.href = '/'; // Redirige para que la Navbar se actualice
+                    window.location.href = '/';
                 });
             }
         } else {
@@ -103,7 +101,6 @@ export const useRegistrationForm = () => {
     return { formData, errors, handleChange, handleSubmit };
 };
 
-// --- Hook for Login Form ---
 export const useLoginForm = () => {
     const [formData, setFormData] = useState({
         correo: '',

@@ -6,7 +6,6 @@ import Pagination from './Pagination';
 import Filter from './Filter';
 import './DashboardPage.css';
 
-// Mock data - En una aplicación real, esto vendría de una API
 const initialProducts = Array.from({ length: 77 }, (_, i) => ({
   id: i + 1,
   name: `Producto ${i + 1}`,
@@ -15,11 +14,10 @@ const initialProducts = Array.from({ length: 77 }, (_, i) => ({
   stock: Math.floor(Math.random() * 101),
 }));
 
-// Capa de API simulada (Mock)
 const api = {
   getProducts: async ({ page, limit, filter }) => {
     console.log('Fetching products with:', { page, limit, filter });
-    await new Promise(resolve => setTimeout(resolve, 300)); // Simula latencia de red
+    await new Promise(resolve => setTimeout(resolve, 300));
     
     let data = [...initialProducts];
 
@@ -41,7 +39,7 @@ const api = {
   createProduct: async (productData) => {
     await new Promise(resolve => setTimeout(resolve, 300));
     const newProduct = { ...productData, id: Math.max(...initialProducts.map(p => p.id), 0) + 1 };
-    initialProducts.unshift(newProduct); // Añadir al principio para visibilidad inmediata
+    initialProducts.unshift(newProduct);
     return newProduct;
   },
   updateProduct: async (productId, productData) => {
@@ -65,21 +63,17 @@ const api = {
 };
 
 const DashboardPage = () => {
-  // Usamos el contexto para las operaciones, pero mantenemos un estado local para la vista del dashboard
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Estado de paginación
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(10);
   const [totalProducts, setTotalProducts] = useState(0);
 
-  // Estado de filtro
   const [filterText, setFilterText] = useState('');
 
-  // Estado del modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [productToEdit, setProductToEdit] = useState(null);
 
@@ -108,7 +102,7 @@ const DashboardPage = () => {
 
   const handleFilterChange = (text) => {
     setFilterText(text);
-    setCurrentPage(1); // Resetear a la primera página en una nueva búsqueda
+    setCurrentPage(1);
   };
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -133,7 +127,7 @@ const DashboardPage = () => {
         Swal.fire('¡Creado!', 'El nuevo producto ha sido creado.', 'success');
       }
       handleCloseModal();
-      fetchProducts(); // Recargar la lista paginada del dashboard
+      fetchProducts();
     } catch (err) {
       Swal.fire('Error', `Ocurrió un error al guardar el producto: ${err.message}`, 'error');
     }
@@ -154,7 +148,7 @@ const DashboardPage = () => {
         try {
           await api.deleteProduct(productId);
           Swal.fire('¡Eliminado!', 'El producto ha sido eliminado.', 'success');
-          fetchProducts(); // Recargar la lista
+          fetchProducts();
         } catch (err) {
           Swal.fire('Error', `Ocurrió un error al eliminar el producto: ${err.message}`, 'error');
         }

@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { CartContext } from '../../features/context/CartContext';
-import './navbar.css';
+import { useNavbarData } from '../hooks/hooks';
+
 
 function Navbar() {
-  const { cart } = useContext(CartContext);
+  const { totalItems, currentUser, handleLogout } = useNavbarData();
 
   return (
     <nav className="main-navbar">
@@ -13,10 +12,25 @@ function Navbar() {
         <Link to="/" className="navbar-link">Inicio</Link>
         <Link to="/productos" className="navbar-link">Productos</Link>
         <Link to="/cart" className="navbar-link">
-          Carrito 🛒 ({cart.length})
+          Carrito 🛒 ({totalItems})
         </Link>
+        {currentUser && (
+          <Link to="/dashboard" className="navbar-link">Dashboard</Link>
+        )}
       </div>
-      <span className="navbar-jewel" title="Joyas decorativas">💍💎✨</span>
+      <div className="navbar-auth">
+        {currentUser ? (
+          <>
+            <span className="navbar-link">Hola, {currentUser.nombre}</span>
+            <button onClick={handleLogout} className="navbar-link">Cerrar Sesión</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="navbar-link">Iniciar Sesión</Link>
+            <Link to="/registro" className="navbar-link">Registrarse</Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 }

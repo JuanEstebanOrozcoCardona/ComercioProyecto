@@ -1,10 +1,13 @@
 import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { CartContext } from '../context/CartContext';
-import './LandingPage.css';
+
 
 function LandingPage() {
   const [products, setProducts] = useState([]);
   const { dispatch } = useContext(CartContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -14,13 +17,36 @@ function LandingPage() {
   }, []);
 
   const handleAdd = (product) => {
-    dispatch({ type: 'ADD_TO_CART', product });
+    const currentUser = localStorage.getItem('currentUser');
+
+    if (!currentUser) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Debes iniciar sesión',
+        text: 'Para agregar productos al carrito, primero debes iniciar sesión.',
+        showConfirmButton: true,
+        confirmButtonText: 'Ir a Iniciar Sesión',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login');
+        }
+      });
+    } else {
+      dispatch({ type: 'ADD_TO_CART', product });
+      Swal.fire({
+        icon: 'success',
+        title: '¡Producto agregado!',
+        text: `${product.title} ha sido añadido a tu carrito.`,
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
   };
 
-  
-
   return (
-    <div className="landing-container">
+    <div className="landing-page">
       <h1 className="landing-title">Catálogo de Productos</h1>
       <div className="products-grid">
         {products.length > 0 ? (
@@ -33,10 +59,7 @@ function LandingPage() {
               />
               <h3 className="product-title">{product.title}</h3>
               <p className="product-price">${product.price.toFixed(2)}</p>
-              <button
-                onClick={() => handleAdd(product)}
-                className="add-cart-btn"
-              >
+              <button onClick={() => handleAdd(product)} className="add-cart-btn">
                 Agregar al carrito
               </button>
             </div>

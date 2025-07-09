@@ -1,10 +1,18 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-import './CartPage.css';
+
 
 function CartPage() {
   const { cart, dispatch } = useContext(CartContext);
+
+  const handleIncrease = (product) => {
+    dispatch({ type: 'ADD_TO_CART', product });
+  };
+
+  const handleDecrease = (id) => {
+    dispatch({ type: 'DECREASE_QUANTITY', id });
+  };
 
   const handleRemove = (id) => {
     dispatch({ type: 'REMOVE_FROM_CART', id });
@@ -14,7 +22,7 @@ function CartPage() {
     dispatch({ type: 'CLEAR_CART' });
   };
 
-  const total = cart.reduce((acc, item) => acc + item.price, 0);
+  const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
   return (
     <div className="cart-bg">
@@ -27,13 +35,20 @@ function CartPage() {
             <ul className="cart-list">
               {cart.map((item) => (
                 <li key={item.id} className="cart-item">
-                  <strong>{item.title}</strong> - ${item.price.toFixed(2)}
-                  <button
-                    onClick={() => handleRemove(item.id)}
-                    className="cart-remove-btn"
-                  >
-                    Quitar
-                  </button>
+                  <span>
+                    <strong>{item.title}</strong> - ${item.price.toFixed(2)}
+                  </span>
+                  <div className="cart-item-controls">
+                    <button onClick={() => handleDecrease(item.id)} className="quantity-btn">-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => handleIncrease(item)} className="quantity-btn">+</button>
+                    <button
+                      onClick={() => handleRemove(item.id)}
+                      className="cart-remove-btn"
+                    >
+                      Quitar
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -42,7 +57,7 @@ function CartPage() {
               onClick={handleClear}
               className="cart-clear-btn"
             >
-              Vaciar carrito
+              Comprar
             </button>
           </>
         )}
